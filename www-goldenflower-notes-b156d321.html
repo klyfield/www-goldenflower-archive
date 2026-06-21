@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>炸金花 · 专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+            background-color: #f1f3f5;
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== 首页横幅 ===== */
+        .hero {
+            background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #dee2e6;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -10%;
+            width: 50%;
+            height: 160%;
+            background: radial-gradient(circle at 30% 40%, rgba(220, 200, 180, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #1e272e;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: '♠ ♥ ♣ ♦';
+            display: block;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            letter-spacing: 10px;
+            margin-top: 6px;
+            font-weight: 300;
+        }
+
+        .hero .sub {
+            margin-top: 1.2rem;
+            font-size: 1.1rem;
+            color: #57606f;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border-top: 1px solid #d0d7de;
+            padding-top: 1.2rem;
+        }
+
+        /* ===== 卡片通用 ===== */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #e9ecef;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ===== 背景说明 ===== */
+        .bg-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .bg-section .card {
+            background: #fafbfc;
+            border-left: 4px solid #b0b8c1;
+            padding-left: 2rem;
+        }
+
+        .bg-section h2 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+        }
+
+        .bg-section p {
+            margin-bottom: 1rem;
+        }
+
+        .bg-section .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== 三段自然介绍 (杂志布局) ===== */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin: 2.8rem 0;
+        }
+
+        @media (min-width: 700px) {
+            .intro-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .intro-grid .card:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (min-width: 1000px) {
+            .intro-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .intro-grid .card:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        .intro-grid .card h3 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-bottom: 0.6rem;
+            color: #2c3e50;
+            border-bottom: 1px dashed #dde2e8;
+            padding-bottom: 0.4rem;
+        }
+
+        .intro-grid .card p {
+            font-size: 0.98rem;
+            color: #3e4a56;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-grid .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-tag {
+            display: inline-block;
+            background: #eef0f2;
+            padding: 0.1rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #4b5a67;
+            border: 1px solid #d5dbdf;
+            margin-right: 6px;
+        }
+
+        /* ===== 页尾访问提示 ===== */
+        .footer-note {
+            margin-top: 3.2rem;
+            padding: 2rem 1.8rem;
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.04);
+            text-align: center;
+        }
+
+        .footer-note p {
+            font-size: 1.05rem;
+            color: #3b4b5a;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .footer-note a {
+            color: #1a2a3a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid #b9c4ce;
+            padding-bottom: 2px;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .footer-note a:hover {
+            color: #000;
+            border-bottom-color: #2c3e50;
+        }
+
+        .footer-note .meta {
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            color: #6f7b88;
+            letter-spacing: 0.3px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dde2e8;
+            margin: 2rem 0 1rem;
+        }
+
+        /* ===== 响应式微调 ===== */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.2rem 0.9rem;
+            }
+
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1.6rem 1.2rem;
+            }
+
+            .bg-section .card {
+                padding-left: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- 首页横幅 -->
+        <header class="hero">
+            <h1>炸金花 · 规则与策略</h1>
+            <div class="sub">一副牌里的博弈哲学 · 稳定入口的纸牌世界</div>
+        </header>
+
+        <!-- 背景说明 -->
+        <section class="bg-section">
+            <div class="card">
+                <h2>从民间牌戏到数字平台</h2>
+                <p>炸金花，又称“扎金花”或“三张牌”，是一种在华人圈流传甚广的纸牌比较游戏。其核心逻辑简单——三张牌比大小，但在下注与弃牌之间却催生出丰富的心理博弈。早期炸金花多出现在街边牌局与家庭聚会，规则因地域稍有差异；到了移动互联网时代，许多线上平台对规则进行了标准化，同时保留了“闷牌”“看牌”“加注”等经典环节。</p>
+                <p>作为一项强调判断与运气的休闲项目，炸金花并不依赖复杂数值计算，而是更看重参与者对局面和对手风格的理解。近些年，以 <a href="https://www-goldenflower.com">炸金花</a> 为主题的站点逐渐成为爱好者聚集的信息枢纽，提供规则查阅、术语整理与玩法演变记录。</p>
+            </div>
+        </section>
+
+        <!-- 三段自然介绍 (杂志式卡片布局) -->
+        <div class="intro-grid">
+            <div class="card">
+                <h3>牌型体系：从散牌到豹子</h3>
+                <p>炸金花的标准牌序由强至弱为：豹子（三张同点）> 同花顺 > 金花（同花）> 顺子 > 对子 > 散牌。其中特殊牌型“235”在部分规则中可降服豹子，增加了变数。每一手牌的强度并非绝对，因为位置、注码与对手弃牌率都会改变实际期望——这正是炸金花有别于单纯翻牌游戏的地方。</p>
+                <p><span class="highlight-tag">豹子概率 ≈ 0.24%</span> <span class="highlight-tag">金花概率 ≈ 5%</span></p>
+            </div>
+            <div class="card">
+                <h3>读人与节奏</h3>
+                <p>资深玩家常将炸金花视为“半信息游戏”：你只看到自己的牌，却要通过对手的下注时机、加注幅度以及是否“闷牌”来推断其范围。线上平台的出现使得这类经验可被记录和复盘，一些站点甚至整理了常见对局模式与心理陷阱，帮助新手更快跨越“凭运气”的阶段。</p>
+            </div>
+            <div class="card">
+                <h3>不同场合下的规则适应</h3>
+                <p>从二人对决到六人满桌，炸金花的策略密度有明显变化。人数越多，早期弃牌率往往越高，而短手局则更侧重起手牌范围。许多中文资料站点（包括 <a href="https://www-goldenflower.com">炸金花</a> 页面）会收录不同人数下的推荐策略与底池控制思路，供玩家根据实际场景选择。</p>
+            </div>
+        </div>
+
+        <!-- 页尾访问提示 (自然嵌入句子) -->
+        <footer class="footer-note">
+            <p>
+                如果你对炸金花的牌型概率、常见术语或不同地域的变体规则感兴趣，<br>
+                可以翻阅 <a href="https://www-goldenflower.com">炸金花</a> 专题页面，那里保留了比较系统的背景梳理与玩法注释。
+            </p>
+            <div class="meta">—— 基于规则介绍 · 不构成任何游戏建议 ——</div>
+        </footer>
+
+        <!-- 极简分隔 + 可选补充 -->
+        <hr>
+        <div style="text-align: center; font-size: 0.8rem; color: #8c9aa8; padding: 0.6rem 0 0.2rem;">
+            杂志专题 · 浅灰卡片版 · 聚焦信息本身
+        </div>
+    </div>
+</body>
+</html>
